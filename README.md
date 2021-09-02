@@ -29,6 +29,8 @@ SENDER_EMAIL | xxxxxx@qq.com | [必填]发件邮箱
 ADMIN_URL | https://xxx.leanapp.cn/ | [建议]Web主机二级域名（云引擎域名），用于自动唤醒 
 BLOGGER_EMAIL | xxxxx@gmail.com | [可选]博主通知收件地址，默认使用SENDER_EMAIL
 AKISMET_KEY | xxxxxxxx | [可选]Akismet Key 用于垃圾评论检测，设为MANUAL_REVIEW开启人工审核，留空不使用反垃圾
+TELEGRAM_BOT_APITOKEN | xxxxxxxx | [可选]用于 Telegram 推送
+TELEGRAM_BOT_CHATID | xxxxxxxx | [可选]用于 Telegram 推送
 
 ![](assets/imgs/envs.png)
 

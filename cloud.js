@@ -13,6 +13,17 @@ function sendNotification(currentComment, defaultIp) {
     bloggerMail = process.env.BLOGGER_EMAIL || process.env.SENDER_EMAIL;
     if (currentComment.get('mail') !== bloggerMail) {
         mail.notice(currentComment);
+
+        if (process.env.TELEGRAM_BOT_APITOKEN && process.env.TELEGRAM_BOT_CHATID) {
+            const tgBody = currentComment.get('nick') + ' - ' + currentComment.get('mail') + ' ' + ' 评论说\n\n' + currentComment.get('comment') + '\n\n' + currentComment.get('ip') 
+
+            request.post({url: 'https://api.telegram.org/bot' + process.env.TELEGRAM_BOT_APITOKEN + '/sendMessage',form: {chat_id: process.env.TELEGRAM_BOT_CHATID, text: tgBody}}, (error, response, body) => {
+                if (error) {
+                    return console.error('Telegram POST Failed:', error);
+                }
+                console.log('Telegram POST Successful!');
+            })
+        }
     }
 
     // AT评论通知
